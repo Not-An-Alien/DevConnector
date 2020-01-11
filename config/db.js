@@ -4,17 +4,19 @@ const db = config.get('mongoURI');
 
 const connectDB = async () => {
     try {
-        //mongoose will return a promise here, we want to wait for it before connecting so we use await 
         await mongoose.connect(db, {
             useNewUrlParser: true,
+            useCreateIndex: true,
+            useFindAndModify: false,
             useUnifiedTopology: true
         });
-        console.log('Mongo db connected...');
-    } catch (error) {
+
+        console.log('MongoDB Connected...');
+    } catch (err) {
         console.error(err.message);
-        // Exit the process with failure
+        // Exit process with failure
         process.exit(1);
     }
-}
+};
 
 module.exports = connectDB;
