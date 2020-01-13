@@ -250,7 +250,7 @@ router.put('/experience', [auth, [
 //@access       private
 //***NOTE*** 
 
-router.delete('./experience/:exp_id', auth, async (req, res) => {
+router.delete('/experience/:exp_id', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({
             user: req.user.id
@@ -268,5 +268,88 @@ router.delete('./experience/:exp_id', auth, async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-})
+});
+
+//@route        Put api/profile/education
+//@description  Add profile education
+//@access       private
+//***NOTE*** 
+
+router.put('/education', [auth, [
+    //Here are our checks for the fields 
+    check('school', 'school is required').not().isEmpty(),
+    check('degree', 'degree is required').not().isEmpty(),
+    check('fieldofstudy', 'field of study is required').not().isEmpty(),
+    check('from', 'From date is required').not().isEmpty()
+
+]], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.array()
+        })
+    }
+
+    //Now we get the body data that is coming in 
+    const {
+        school,
+        degree,
+        fieldofstudy,
+        from,
+        to,
+        current,
+        description
+    } = req.body;
+    //**When assiging the titles to values below you can simply put "Title" for example with it's corresponding value OR Title: Title works to */
+    const newEdu = {
+        school: school,
+        degree: degree,
+        fieldofstudy: fieldofstudy,
+        from: from,
+        to: to,
+        current: current,
+        description: description
+    }
+
+    try {
+        const profile = await Profile.findOne({
+            user: req.user.id
+        });
+
+        profile.education.unshift(newEdu);
+
+        await profile.save();
+
+        res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+//@route        DELETE api/profile/education/:edu_id
+//@description  Delete education from profile
+//@access       private
+//***NOTE*** 
+
+router.delete('/education/:edu_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({
+            user: req.user.id
+        });
+
+        //get the remove index 
+        const removeIndex = profile.eeducation.map(item => item.id).indexOf(req.params.edu_id);
+
+        profile.education.splice(removeIndex, 1);
+
+        await profile.save();
+
+        res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;
