@@ -22,7 +22,7 @@ const PostSchema = new Schema({
         type: String
     },
     // this way we know what likes came from which users and a user can only like a post once 
-    liked: [{
+    likes: [{
         user: {
             type: Schema.Types.ObjectId,
             ref: 'users'
