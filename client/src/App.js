@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import './App.css';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Bring in components 
 import Landing from './components/layout/Landing';
@@ -22,6 +23,9 @@ const App = () => (
       </section>
     </Fragment>
   </Router>
+=======
+
+>>>>>>> parent of bfdfa5c... Created login and register components
 =======
 
 >>>>>>> parent of bfdfa5c... Created login and register components
