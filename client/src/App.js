@@ -1,8 +1,12 @@
-import React, { Fragment } from 'react';
+import React, {
+  Fragment
+} from 'react';
 import './App.css';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 // Bring in components 
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
@@ -14,27 +18,16 @@ const App = () => (
     <Fragment>
       <Navbar />
       <Route exact path='/' component={Landing} />
-      <section className="container">
-        <Switch>
+      <section className="container" >
+        <Switch >
           <Route exact path='/register' component={Register} />
           <Route exact path='/Login' component={Login} />
-        </Switch>
-
+        </Switch >
       </section>
-    </Fragment>
+    </Fragment >
   </Router>
-=======
 
->>>>>>> parent of bfdfa5c... Created login and register components
-=======
-
->>>>>>> parent of bfdfa5c... Created login and register components
-
-const App = () => (
-  <Fragment>
-    <h1>App</h1>
-  </Fragment>
-);
+)
 
 
 export default App;
