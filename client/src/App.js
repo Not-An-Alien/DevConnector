@@ -13,6 +13,8 @@ import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 // Redux 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -39,7 +41,8 @@ const App = () => {
             <Alert />
             <Switch >
               <Route exact path='/register' component={Register} />
-              <Route exact path='/Login' component={Login} />
+              <Route exact path='/login' component={Login} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch >
           </section>
         </Fragment >
