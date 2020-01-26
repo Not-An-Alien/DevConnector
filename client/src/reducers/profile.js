@@ -5,7 +5,7 @@ import {
 	UPDATE_PROFILE
 } from '../actions/types';
 
-const initailState = {
+const initialState = {
 	profile: null,
 	profiles: [],
 	repos: [],
@@ -13,7 +13,7 @@ const initailState = {
 	error: {}
 };
 
-export default function(state = initailState, action) {
+export default function(state = initialState, action) {
 	const { type, payload } = action;
 
 	switch (type) {
