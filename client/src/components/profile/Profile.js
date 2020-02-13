@@ -8,6 +8,7 @@ import ProfileTop from './ProfileTop';
 import ProfileExperience from './ProfileExperience';
 import ProfileAbout from './ProfileAbout';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 
 const Profile = ({
 	getProfileById,
@@ -69,6 +70,10 @@ const Profile = ({
 								<h4> No education </h4>
 							)}
 						</div>
+
+						{profile.githubusername && (
+							<ProfileGithub username={profile.githubusername} />
+						)}
 					</div>
 				</Fragment>
 			)}
