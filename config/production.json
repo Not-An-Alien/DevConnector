@@ -1,0 +1,6 @@
+{
+	"mongoURI": "mongodb+srv://Miles:Miles@devconnect-hnoes.mongodb.net/test?retryWrites=true&w=majority",
+	"jwtSecret": "mySecret",
+	"githubClientId": "a0e22685371ba8d4c240",
+	"githubSecret": "cc5a73326c873f50a4b5cbf982d0fbdfb6e344f5"
+}
